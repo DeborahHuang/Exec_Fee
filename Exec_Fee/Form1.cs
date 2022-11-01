@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Exec_Fee
@@ -16,6 +17,8 @@ namespace Exec_Fee
 		public Form1()
 		{
 			InitializeComponent();
+			lblCarCharge.Text = String.Empty;
+			lblChargeReason.Text = String.Empty;
 		}
 
 		private void btnCount_Click(object sender, EventArgs e)
@@ -25,41 +28,62 @@ namespace Exec_Fee
 			int chargeFee=0;
 
 			try
-			{
-				gender = GetGender();
+			{				
 				age = GetAge();
+				gender = GetGender();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
+				return;
 			}
 
-			//ToDo chargeStandard gender計算標準
-			int value = ChargeStandard(RadioButton.XXX, txtAge.Text);
-			string carCharge = chargeFee.ToString();
+			chargeFee = ChargeStandard(age,gender);
+			
+			
+			if (chargeFee == 3)
+			{
+				lblCarCharge.Text = $"您的車資為{chargeFee}元";
+				lblChargeReason.Text = $"因為您為{radioBtnFemale.Text}且大於60歲";
+			}
 
+			else if (chargeFee == 2)
+			{
+				lblCarCharge.Text = $"您的車資為{chargeFee}元";
+				lblChargeReason.Text = $"因為您為{radioBtnMale.Text}且大於70歲";
+			}
 
+			else if (chargeFee == 0)
+			{
+				lblCarCharge.Text = $"您的車資為{chargeFee}元";
+				lblChargeReason.Text = $"3歲以下孩童免費";
+			}
+
+			else
+			{
+				lblCarCharge.Text = $"您的車資為15元";
+				lblChargeReason.Text = $"您購買的是全票";
+			}
+			return;
 		}
 
-		private int ChargeStandard(bool gender, int age)
+		private int ChargeStandard(int age,bool gender)
 		{
 			int chargeFee;
-
 			if (age >= 70 && gender == true)chargeFee = 2;
-			else if (age >= 60 && gender == false)chargeFee = 3;
-			else if (age <= 3)chargeFee = 0;
+			else if (age >= 60 && gender == false) chargeFee = 3;
+			else if (age <= 3) chargeFee = 0;
 			else chargeFee = 15;
 			return chargeFee;
-
 		}
 
 		private bool GetGender()
 		{
-			//ToDo Gender獲得值
-			bool selection = RadioButton.ControlCollection;
-			if (selection == null) throw new Exception("請選擇性別");
-			if (selection == true) gender = true;
-			else gender = false;
+			bool gender;
+			
+			if (radioBtnMale.Checked) gender = true;
+			if (radioBtnFemale.Checked) gender = false;
+			else throw new Exception("請選擇性別");
 			return gender;
 		}
 

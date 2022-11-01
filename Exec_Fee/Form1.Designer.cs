@@ -29,15 +29,15 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.lblAge = new System.Windows.Forms.Label();
-			this.txtAge = new System.Windows.Forms.TextBox();
-			this.radioBtnMale = new System.Windows.Forms.RadioButton();
-			this.radioBtnFemale = new System.Windows.Forms.RadioButton();
 			this.btnCount = new System.Windows.Forms.Button();
-			this.grpBoxCalResult = new System.Windows.Forms.GroupBox();
-			this.lblCarCharge = new System.Windows.Forms.Label();
-			this.lblChargeReason = new System.Windows.Forms.Label();
+			this.radioBtnFemale = new System.Windows.Forms.RadioButton();
+			this.radioBtnMale = new System.Windows.Forms.RadioButton();
+			this.txtAge = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.lblAge = new System.Windows.Forms.Label();
+			this.grpBoxCalResult = new System.Windows.Forms.GroupBox();
+			this.lblChargeReason = new System.Windows.Forms.Label();
+			this.lblCarCharge = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.grpBoxCalResult.SuspendLayout();
 			this.SuspendLayout();
@@ -59,34 +59,16 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "客戶資訊";
 			// 
-			// lblAge
+			// btnCount
 			// 
-			this.lblAge.AutoSize = true;
-			this.lblAge.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.lblAge.Location = new System.Drawing.Point(37, 41);
-			this.lblAge.Name = "lblAge";
-			this.lblAge.Size = new System.Drawing.Size(48, 22);
-			this.lblAge.TabIndex = 0;
-			this.lblAge.Text = "年齡:";
-			// 
-			// txtAge
-			// 
-			this.txtAge.Location = new System.Drawing.Point(91, 36);
-			this.txtAge.Name = "txtAge";
-			this.txtAge.Size = new System.Drawing.Size(146, 31);
-			this.txtAge.TabIndex = 1;
-			// 
-			// radioBtnMale
-			// 
-			this.radioBtnMale.AutoSize = true;
-			this.radioBtnMale.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.radioBtnMale.Location = new System.Drawing.Point(334, 37);
-			this.radioBtnMale.Name = "radioBtnMale";
-			this.radioBtnMale.Size = new System.Drawing.Size(65, 26);
-			this.radioBtnMale.TabIndex = 2;
-			this.radioBtnMale.TabStop = true;
-			this.radioBtnMale.Text = "男性";
-			this.radioBtnMale.UseVisualStyleBackColor = true;
+			this.btnCount.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnCount.Location = new System.Drawing.Point(349, 102);
+			this.btnCount.Name = "btnCount";
+			this.btnCount.Size = new System.Drawing.Size(100, 32);
+			this.btnCount.TabIndex = 3;
+			this.btnCount.Text = "計算";
+			this.btnCount.UseVisualStyleBackColor = true;
+			this.btnCount.Click += new System.EventHandler(this.btnCount_Click);
 			// 
 			// radioBtnFemale
 			// 
@@ -100,16 +82,45 @@
 			this.radioBtnFemale.Text = "女性";
 			this.radioBtnFemale.UseVisualStyleBackColor = true;
 			// 
-			// btnCount
+			// radioBtnMale
 			// 
-			this.btnCount.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnCount.Location = new System.Drawing.Point(349, 102);
-			this.btnCount.Name = "btnCount";
-			this.btnCount.Size = new System.Drawing.Size(100, 32);
-			this.btnCount.TabIndex = 3;
-			this.btnCount.Text = "計算";
-			this.btnCount.UseVisualStyleBackColor = true;
-			this.btnCount.Click += new System.EventHandler(this.btnCount_Click);
+			this.radioBtnMale.AutoSize = true;
+			this.radioBtnMale.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.radioBtnMale.Location = new System.Drawing.Point(334, 37);
+			this.radioBtnMale.Name = "radioBtnMale";
+			this.radioBtnMale.Size = new System.Drawing.Size(65, 26);
+			this.radioBtnMale.TabIndex = 2;
+			this.radioBtnMale.TabStop = true;
+			this.radioBtnMale.Text = "男性";
+			this.radioBtnMale.UseVisualStyleBackColor = true;
+			
+			// 
+			// txtAge
+			// 
+			this.txtAge.Location = new System.Drawing.Point(91, 36);
+			this.txtAge.Name = "txtAge";
+			this.txtAge.Size = new System.Drawing.Size(146, 31);
+			this.txtAge.TabIndex = 1;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(280, 41);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(48, 22);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "性別:";
+			// 
+			// lblAge
+			// 
+			this.lblAge.AutoSize = true;
+			this.lblAge.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.lblAge.Location = new System.Drawing.Point(37, 41);
+			this.lblAge.Name = "lblAge";
+			this.lblAge.Size = new System.Drawing.Size(48, 22);
+			this.lblAge.TabIndex = 0;
+			this.lblAge.Text = "年齡:";
 			// 
 			// grpBoxCalResult
 			// 
@@ -124,16 +135,6 @@
 			this.grpBoxCalResult.TabStop = false;
 			this.grpBoxCalResult.Text = "計算結果";
 			// 
-			// lblCarCharge
-			// 
-			this.lblCarCharge.AutoSize = true;
-			this.lblCarCharge.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.lblCarCharge.Location = new System.Drawing.Point(37, 43);
-			this.lblCarCharge.Name = "lblCarCharge";
-			this.lblCarCharge.Size = new System.Drawing.Size(48, 22);
-			this.lblCarCharge.TabIndex = 0;
-			this.lblCarCharge.Text = "車資:";
-			// 
 			// lblChargeReason
 			// 
 			this.lblChargeReason.AutoSize = true;
@@ -144,15 +145,15 @@
 			this.lblChargeReason.TabIndex = 0;
 			this.lblChargeReason.Text = "原因:";
 			// 
-			// label1
+			// lblCarCharge
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.Location = new System.Drawing.Point(280, 41);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(48, 22);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "性別:";
+			this.lblCarCharge.AutoSize = true;
+			this.lblCarCharge.Font = new System.Drawing.Font("微軟正黑體", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.lblCarCharge.Location = new System.Drawing.Point(37, 43);
+			this.lblCarCharge.Name = "lblCarCharge";
+			this.lblCarCharge.Size = new System.Drawing.Size(48, 22);
+			this.lblCarCharge.TabIndex = 0;
+			this.lblCarCharge.Text = "車資:";
 			// 
 			// Form1
 			// 
